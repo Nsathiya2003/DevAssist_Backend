@@ -28,7 +28,7 @@ export const createUser = async (req,res) => {
         })
     }
     catch(error){
-        return res.status(201).json({
+        return res.status(400).json({
             status: 'failure',
             message:'Failed to create user',
             error: error.message,
@@ -71,7 +71,7 @@ export const login = async (req,res) => {
 
     }
     catch(error){
-         return res.status(201).json({
+         return res.status(500).json({
             status: 'failure',
             message:'Failed to login user',
             error: error.message,
