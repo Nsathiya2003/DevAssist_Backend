@@ -10,3 +10,23 @@ export const generateAccessToken = async (payload) => {
     return token;
 
 }
+
+export const isAuthenticated = (req,res,next) => {
+    let isAuthToken = req.headers['authorization'];
+    try{
+        if(!isAuthToken){
+            return res.status(409).json({
+                message:'token is required'
+            })
+        };
+        const token = isAuthToken.split("")[1];
+
+        const decoded = jwt.verify(token,process.env.JWT_KEY_SECRET);
+        req.user = decoded;
+        next();
+
+    }
+    catch(error){
+
+    }
+}

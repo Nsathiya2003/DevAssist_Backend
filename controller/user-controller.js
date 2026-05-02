@@ -79,3 +79,50 @@ export const login = async (req,res) => {
         })
     }
 }
+
+// export const filter = async (req,res) => {
+//     const { page =1, limit=10, username, email } = req.body;
+
+//     let filter = {};
+
+//     if(username){
+//         filter.username = { $regex: username,$options:"i"}
+//     }
+//     if(email){
+//         filter.email = { $regex : email, $options:"i"}
+//     }
+
+//     const skip = (page-1) * limit;
+
+//     const users = await User.find(filter).skip(skip).limit(Number(limit));
+
+//     const total = await users.countDocuments(filter);
+
+//     return res.status(201).json({
+//         status:'true',
+//         message:'Filter is returned retrived successfully',
+//         data:users
+//     })
+
+
+
+// }
+
+
+const filter = async (req,res)=> {
+    const { page=1, limit=10,username} = req.body;
+
+    let filter = {};
+
+    if(username){
+        filter.username = { $regex: username, $options:'i'}
+    }
+
+    const skip = (page-1)*limit;
+
+    const users = await User.find(filter).populate("clientId");;
+
+    const countDocuments = await users.countDocuments(users);
+
+    return users;
+}
