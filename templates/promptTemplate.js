@@ -1,100 +1,118 @@
 export const templates = {
   explain: (input) => `
-You are a helpful AI assistant.
 
-Instructions:
-- Explain clearly in simple terms
-- Use examples
-- Keep it under 5 points
+  
+  Instructions:
+  - Explain clearly in simple terms
+  - Use examples
+  - Keep it under 5 points
 
-Output Format:
-Return ONLY valid JSON.
+  Output Format:
+  Return ONLY valid JSON.
+  No extra text, no markdown.
 
-Rules:
-- Do NOT include any explanation
-- Do NOT include text before or after JSON
-- Do NOT include markdown (like \`\`\`json)
-- Response must be pure JSON only
+  If unsure, respond with best effort but do not hallucinate.
 
-Expected JSON structure:
-{
-  "title": "short title",
-  "points": ["point1", "point2", "point3"]
-}
+  Rules:
+  - Do NOT include any explanation
+  - Do NOT include text before or after JSON
+  - Do NOT include markdown (like \`\`\`json)
+  - Response must be pure JSON only
 
-User Input:
-${input}
-`,
+  Expected JSON structure:
+  {
+    "title": "short title",
+    "points": ["point1", "point2", "point3"]
+  }
 
-  summarize: (input) => `
-You are a helpful AI assistant.
+  User Input:
+  ${input}
+  `,
 
-Instructions:
-- Summarize the content
-- Keep it short
-- Use bullet points
+    summarize: (input) => `
 
-Output Format:
-Return ONLY valid JSON.
+  Instructions:
+  - Summarize the content
+  - Keep it short
+  - Use bullet points
 
-Rules:
-- Do NOT include any explanation
-- Do NOT include text before or after JSON
+  Output Format:
+  Return ONLY valid JSON.
+  No extra text, no markdown.
 
-Expected JSON structure:
-{
-  "summary": ["point1", "point2", "point3"]
-}
+  If unsure, respond with best effort but do not hallucinate.
 
-User Input:
-${input}
-`,
+  Rules:
+  - Do NOT include any explanation
+  - Do NOT include text before or after JSON
+  - If you are not sure, clearly say uncertainty instead of guessing.
 
-  compare: (input) => `
-You are a helpful AI assistant.
 
-Instructions:
-- Compare clearly
-- Show differences
+  Expected JSON structure:
+  {
+    "summary": ["point1", "point2", "point3"]
+  }
 
-Output Format:
-Return ONLY valid JSON.
+  User Input:
+  ${input}
+  `,
 
-Rules:
-- Do NOT include any explanation
-- Do NOT include text before or after JSON
+    compare: (input) => `
+    You specialize in Node.js, React, databases, system design, and debugging.
 
-Expected JSON structure:
-{
-  "topic": "comparison topic",
-  "differences": [
-    { "feature": "", "item1": "", "item2": "" }
-  ]
-}
 
-User Input:
-${input}
-`,
 
-  general: (input) => `
-You are a helpful AI assistant.
+  Instructions:
+  - Compare clearly
+  - Show differences
 
-Instructions:
-- Answer clearly and concisely
+  Output Format:
+  Return ONLY valid JSON.
+  No extra text, no markdown.
 
-Output Format:
-Return ONLY valid JSON.
+  If unsure, respond with best effort but do not hallucinate.
 
-Rules:
-- Do NOT include any explanation
-- Do NOT include text before or after JSON
+  Rules:
+  - Do NOT include any explanation
+  - Do NOT include text before or after JSON
+  - If you are not sure, clearly say uncertainty instead of guessing.
 
-Expected JSON structure:
-{
-  "answer": "your answer here"
-}
+  Expected JSON structure:
+  {
+    "topic": "comparison topic",
+    "differences": [
+      { "feature": "", "item1": "", "item2": "" }
+    ]
+  }
 
-User Input:
-${input}
-`,
-};
+  User Input:
+  ${input}
+  `,
+
+    general: (input) => `
+
+
+  Instructions:
+  - Answer clearly and concisely
+
+  Output Format:
+  Return ONLY valid JSON.
+  No extra text, no markdown.
+
+  If unsure, respond with best effort but do not hallucinate.
+
+  Rules:
+  - Do NOT include any explanation
+  - Do NOT include text before or after JSON
+  - If you are not sure, clearly say uncertainty instead of guessing.
+
+
+  Expected JSON structure:
+  {
+    "answer": "your answer here"
+  }
+
+  User Input:
+  ${input}
+  `,
+  };
