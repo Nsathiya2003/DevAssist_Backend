@@ -46,6 +46,7 @@
 //2. for Llama via open-router
 import dotenv from "dotenv";
 import OpenAI from "openai";
+import { extractJSON } from "../helpers/output-extraction.js";
 
 dotenv.config();
 
@@ -74,9 +75,16 @@ export const aiIntegrate = async (prompt, retries = 3) => {
     });
 
     const text = response.choices[0].message.content;
-    console.log("text", text);
+    let parsed;
 
-    return text;
+    try {
+      const jsonString = extractJSON(text);
+      parsed = jsonString ? JSON.parse(jsonString) : { raw: text };
+      return parsed;
+    } 
+    catch (e) {
+      parsed = { raw: text };
+    }
   } catch (error) {
     if (retries > 0) {
       const delay = (4 - retries) * 2000;
