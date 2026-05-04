@@ -47,6 +47,7 @@
 import dotenv from "dotenv";
 import OpenAI from "openai";
 import { extractJSON } from "../helpers/output-extraction.js";
+import { systemPrompt } from "./system-prompt.js";
 
 dotenv.config();
 
@@ -64,8 +65,7 @@ export const aiIntegrate = async (prompt, retries = 3) => {
       messages: [
         {
           role: "system",
-          content:
-            "You are a friendly senior developer who explains concepts clearly with examples.",
+          content: systemPrompt
         },
         {
           role: "user",
