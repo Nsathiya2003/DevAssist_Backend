@@ -16,5 +16,8 @@ export const buildPrompt = (input) => {
 
   const templateFn = templates[task] || templates.general;
 
-  return templateFn(input);
+  return {
+    type: task,
+    prompt: templateFn(input)
+  };
 };

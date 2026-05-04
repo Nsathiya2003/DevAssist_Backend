@@ -75,16 +75,22 @@ export const aiIntegrate = async (prompt, retries = 3) => {
     });
 
     const text = response.choices[0].message.content;
-    let parsed;
+   let parsed;
 
-    try {
-      const jsonString = extractJSON(text);
-      parsed = jsonString ? JSON.parse(jsonString) : { raw: text };
-      return parsed;
-    } 
-    catch (e) {
-      parsed = { raw: text };
-    }
+try {
+  const jsonString = extractJSON(text);
+
+  if (!jsonString) {
+    return { raw: text };
+  }
+
+  parsed = JSON.parse(jsonString);
+
+  return parsed;
+
+} catch (e) {
+  return { raw: text };
+}
   } catch (error) {
     if (retries > 0) {
       const delay = (4 - retries) * 2000;

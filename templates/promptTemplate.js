@@ -1,7 +1,5 @@
 export const templates = {
   explain: (input) => `
-
-  
   Instructions:
   - Explain clearly in simple terms
   - Use examples
