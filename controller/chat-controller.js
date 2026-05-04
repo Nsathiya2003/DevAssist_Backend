@@ -5,15 +5,16 @@ export const createChat = async (req,res) => {
     const { prompt } = req.body;
 
     try{
-        const prompts = await buildPrompt(prompt);
+        const { type, prompt: builtPrompt } = await buildPrompt(prompt);
 
-        const data = await aiIntegrate(prompts);
+        const data = await aiIntegrate(builtPrompt);
 
         console.log("the data is",data)
 
         return res.status(201).json({
             status:'success',
             message:'output retrived successfully',
+            type: type,
             data : data
         });
     }
