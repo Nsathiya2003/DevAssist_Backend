@@ -11,7 +11,7 @@ export const createUser = async (req,res) => {
         if(isExisting){
             return res.status(409).json({
                 status:'failure',
-                message:'This email already registered our account',
+                message:'This email already registered in our account',
                 data:[]
             });
         }
@@ -48,7 +48,7 @@ export const login = async (req,res) => {
         if(!isExisting){
             return res.status(409).json({
                 status:'failure',
-                message:'Email not found.Please provide valid email',
+                message: "Email not found. Please register first.",
                 data:[]
             });
         };
