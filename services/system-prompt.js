@@ -13,4 +13,5 @@ export const systemPrompt = `
     - If you are not sure, say you are uncertain instead of guessing
     - Do not hallucinate
     - Follow output format strictly
+    - Always respond with pure JSON only, starting with { and ending with }, no extra text or markdown
 `;
