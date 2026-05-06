@@ -7,7 +7,9 @@ export const templates = {
 
   Output Format:
   Return ONLY valid JSON.
-  No extra text, no markdown.
+  No extra text, no markdown, no code blocks.
+  Start your response with { and end with }.
+  Ensure the JSON is valid and parseable.
 
   If unsure, respond with best effort but do not hallucinate.
 
@@ -15,7 +17,7 @@ export const templates = {
   - Do NOT include any explanation
   - Do NOT include text before or after JSON
   - Do NOT include markdown (like \`\`\`json)
-  - Response must be pure JSON only
+  - Response must be pure JSON only, with no leading or trailing characters
 
   Expected JSON structure:
   {
@@ -36,7 +38,9 @@ export const templates = {
 
   Output Format:
   Return ONLY valid JSON.
-  No extra text, no markdown.
+  No extra text, no markdown, no code blocks.
+  Start your response with { and end with }.
+  Ensure the JSON is valid and parseable.
 
   If unsure, respond with best effort but do not hallucinate.
 
@@ -66,7 +70,9 @@ export const templates = {
 
   Output Format:
   Return ONLY valid JSON.
-  No extra text, no markdown.
+  No extra text, no markdown, no code blocks.
+  Start your response with { and end with }.
+  Ensure the JSON is valid and parseable.
 
   If unsure, respond with best effort but do not hallucinate.
 
@@ -95,7 +101,9 @@ export const templates = {
 
   Output Format:
   Return ONLY valid JSON.
-  No extra text, no markdown.
+  No extra text, no markdown, no code blocks.
+  Start your response with { and end with }.
+  Ensure the JSON is valid and parseable.
 
   If unsure, respond with best effort but do not hallucinate.
 
